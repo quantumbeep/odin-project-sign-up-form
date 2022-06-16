@@ -6,9 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="style.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Amita&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Amita&display=swap"
+      rel="stylesheet"
+    />
     <script src="app.js"></script>
   </head>
   <body>
@@ -30,14 +33,40 @@
           <form action="submit">
             <div>
               <label for="firstname">First Name</label>
-              <input type="text" id="firstname" name="firstname" value="" />
+              <input
+                type="text"
+                id="firstname"
+                name="firstname"
+                value=""
+                required
+                pattern="^[\p{L}'][ \p{L}'-]*[\p{L}]$"
+              />
               <label for="lastname">Last Name</label>
-              <input type="text" id="lastname" name="lastname" value="" />
+              <input
+                type="text"
+                id="lastname"
+                name="lastname"
+                value=""
+                required
+                pattern="^[\p{L}'][ \p{L}'-]*[\p{L}]$"
+              />
               <label for="email">Email</label>
-              <input type="email" id="email" name="email" value="" />
+              <input type="email" id="email" name="email" value="" required />
             </div>
             <div></div>
             <div>
+              <label for="phone">Phone Number</label>
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                value=""
+                required
+                placeholder="123-123-1234"
+                minlength="10"
+                inputmode="numeric"
+              />
+
               <label for="password">Password</label>
               <input
                 class="error"
@@ -45,19 +74,25 @@
                 id="password"
                 name="password"
                 value=""
+                required
+                pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"
+                title="UpperCase, LowerCase, Number/SpecialChar and min 8 Chars"
               />
-              <label for="password-copy">Confirm Password</label>
+              <label for="confirm">Confirm Password</label>
               <input
                 class="error"
                 type="password"
-                id="password-copy"
-                name="password-copy"
+                id="confirm"
+                name="confirm"
                 value=""
+                required
+                onkeyup="checkSame()"
               />
+              <span id="message"></span>
             </div>
+            <button type="submit">Create Account</button>
           </form>
         </section>
-        <button type="submit">Create Account</button>
         <p>Already have an account? <a href="">Log In</a></p>
       </div>
     </div>
